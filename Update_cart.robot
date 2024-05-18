@@ -1,12 +1,10 @@
 *** Settings ***
-Documentation     validate product
+Documentation     test case in updte 10 product
 Library           SeleniumLibrary
 Library    DateTime
 Library    RequestsLibrary
 Library    Collections
 Library    random
-
-Resource   ./keyword.robot
 
 *** Variables ***
 ${url}              https://automationteststore.com/
@@ -27,15 +25,7 @@ ${browser}          Chrome
 @{ID_CONDITIONER}       69      101     73      71      72
 
 *** Test Cases ***
-TC Login user
-    Open Web
-    Click Element    //*[@id="customer_menu_top"]/li/a
-    Input Text    //*[@id="loginFrm_loginname"]    truongthai
-    Input Password    //*[@id="loginFrm_password"]    0364529228
-    Click Button    //*[@id="loginFrm"]/fieldset/button
-    Close Browser
-
-TC Add all available Shoes to cart
+TC Buy all available Shoes to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=68_69&product_id=
     Open Web
     Login
@@ -46,11 +36,14 @@ TC Add all available Shoes to cart
         Check shoes     ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=68_69
     END
+    Up date 10 product
+    Check out
     Close Browser
 
-TC Add all available T-shirts to cart
+TC Buy and update 10 product all available T-shirts to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=68_70&product_id=
     Open Web
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[2]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[2]/div/ul[1]/li[2]/a
     FOR    ${product_url}    IN    @{ID_T_SHIRT}
@@ -58,11 +51,13 @@ TC Add all available T-shirts to cart
         Check T-Shirt     ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=68_70
     END
+    Up date 10 product
+    Check out
     Close Browser
-TC Add all available Cheeks to cart
+TC Buy and update 10 product all available Cheeks to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=36_40&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[3]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[3]/div/ul[1]/li[1]
     FOR    ${product_url}    IN    @{ID_CHEEK}
@@ -70,40 +65,13 @@ TC Add all available Cheeks to cart
         Check Cheeks    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=36_40
     END
+    Up date 10 product
+    Check out
     Close Browser
-# ========= liên ket mang xa hoi ==========
-TC connect facebook
-    Open Web
-    Login
-    Click Element    /html/body/div/header/div[2]/div/div[4]/div/div/a[1]
 
-TC connect twitter
+TC Buy and update 10 product available Eyes to cart
     Open Web
     Login
-    Click Element    /html/body/div/header/div[2]/div/div[4]/div/div/a[2]
-
-TC connect linkedin
-    Open Web
-    Login
-    Click Element    /html/body/div/header/div[2]/div/div[4]/div/div/a[3]
-
-TC payment
-    ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/category&path=36_40&product_id=
-    Open Web
-    Login
-    Mouse Over    //*[@id="categorymenu"]/nav/ul/li[2]/a
-    Click Element    //*[@id="categorymenu"]/nav/ul/li[3]/div/ul[1]/li[1]/a
-    FOR    ${product_url}    IN    @{ID_CHEEK}
-        Click Element    //a[@href='${base_url}${product_url}']
-        Check Cheeks    ${product_url}
-        Go To    https://automationteststore.com/index.php?rt=product/category&path=36_40
-    END
-    Click Element    //*[@id="main_menu_top"]/li[4]/a
-    Click Button    //*[@id="checkout_btn"]
-#    =====================================================
-TC Add available Eyes to cart
-    Open Web
-#    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[3]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[3]/div/ul[1]/li[2]/a
     Click Element    //a[@href='https://automationteststore.com/index.php?rt=product/product&path=36_39&product_id=56']
@@ -112,10 +80,13 @@ TC Add available Eyes to cart
     ${random_number}    Evaluate    random.randint(654, 659)
     Select From List By Value    option[319]    ${random_number}
     Click Element    //*[@id="product"]/fieldset/div[5]/ul/li/a
+    Up date 10 product
+    Check out
+    Close Browser
 
-TC Add available Value Set to cart
+TC Buy and update 10 product available Value Set to cart
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[3]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[3]/div/ul[1]/li[6]/a
     Click Element    //a[@href='https://automationteststore.com/index.php?rt=product/product&path=36_37&product_id=61']
@@ -124,10 +95,13 @@ TC Add available Value Set to cart
     ${random_number}    Evaluate    random.randint(625, 627)
     Select From List By Value    option[308]    ${random_number}
     Click Element    //*[@id="product"]/fieldset/div[5]/ul/li/a
+    Up date 10 product
+    Check out
+    Close Browser
 
-TC Add available Face to cart
+TC Buy and update 10 product available Face to cart
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[3]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[3]/div/ul[1]/li[3]/a
     Click Element    //a[@href='https://automationteststore.com/index.php?rt=product/product&path=36_38&product_id=57']
@@ -136,11 +110,14 @@ TC Add available Face to cart
     ${random_number}    Evaluate    random.randint(612, 614)
     Select From List By Value    option[304]    ${random_number}
     Click Element    //*[@id="product"]/fieldset/div[5]/ul/li/a
+    Up date 10 product
+    Check out
+    Close Browser
 
-TC Add all available Lips to cart
+TC Buy and update 10 product all available Lips to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=36_41&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[3]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[3]/div/ul[1]/li[4]/a
     FOR    ${product_url}    IN    @{ID_LIPs}
@@ -148,11 +125,13 @@ TC Add all available Lips to cart
         Check Lips    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=36_41
     END
+    Up date 10 product
+    Check out
     Close Browser
-TC Add all available Nail to cart
+TC Buy and update 10 product all available Nail to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=36_42&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[3]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[3]/div/ul[1]/li[5]/a
     FOR    ${product_url}    IN    @{ID_NAIL}
@@ -160,11 +139,13 @@ TC Add all available Nail to cart
         Check Nails    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=36_42
     END
+    Up date 10 product
+    Check out
     Close Browser
-TC Add all available Skin care eyes to cart
+TC Buy and update 10 product all available Skin care eyes to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=43_47&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[4]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[4]/div/ul[1]/li[1]/a
     FOR    ${product_url}    IN    @{ID_SKINCARE_EYE}
@@ -172,12 +153,14 @@ TC Add all available Skin care eyes to cart
         Check Skin Care Eyes    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=43_47
     END
+    Up date 10 product
+    Check out
     Close Browser
 
-TC Add all available Skin care face to cart
+TC Buy and update 10 product all available Skin care face to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=43_46&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[4]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[4]/div/ul[1]/li[2]/a
     FOR    ${product_url}    IN    @{ID_SKINCARE_FACE}
@@ -185,32 +168,40 @@ TC Add all available Skin care face to cart
         Check Skin Care Face    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=43_46
     END
+    Up date 10 product
+    Check out
     Close Browser
 
-TC Add available gift ideas & set to cart
+TC Buy and update 10 product available gift ideas & set to cart
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[4]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[4]/div/ul[1]/li[3]/a
     Click Element    //a[@href='https://automationteststore.com/index.php?rt=product/product&path=43_45&product_id=94']
     ${random_number_1}    Evaluate    random.randint(1, 10)
     Input Text    //*[@id="product_quantity"]    ${random_number_1}
     Click Element    //*[@id="product"]/fieldset/div[4]/ul/li/a
+    Up date 10 product
+    Check out
+    Close Browser
 
-TC Add available hands & nails to cart
+TC Buy and update 10 product available hands & nails to cart
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[4]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[4]/div/ul[1]/li[4]/a
     Click Element    //a[@href='https://automationteststore.com/index.php?rt=product/product&path=43_48&product_id=68']
     ${random_number_1}    Evaluate    random.randint(1, 10)
     Input Text    //*[@id="product_quantity"]    ${random_number_1}
     Click Element    //*[@id="product"]/fieldset/div[4]/ul/li/a
+    Up date 10 product
+    Check out
+    Close Browser
 
-TC Add all available men fragrance to cart
+TC Buy and update 10 product all available men fragrance to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=49_51&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[5]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[5]/div/ul[1]/li[1]/a
     FOR    ${product_url}    IN    @{ID_MEN_FRAGRANCE}
@@ -218,12 +209,14 @@ TC Add all available men fragrance to cart
         Check men fragrance    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=49_51
     END
+    Up date 10 product
+    Check out
     Close Browser
 
-TC Add all available women fragrance to cart
+TC Buy and update 10 product all available women fragrance to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=49_50&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[5]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[5]/div/ul[1]/li[2]/a
     FOR    ${product_url}    IN    @{ID_WOMEN_FRAGRANCE}
@@ -231,44 +224,53 @@ TC Add all available women fragrance to cart
         Check women fragrance    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=49_50
     END
+    Up date 10 product
+    Check out
     Close Browser
 
-TC Add available body shower to cart
+TC Buy and update 10 product available body shower to cart
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[6]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[6]/div/ul[1]/li[1]/a
     Click Element    //a[@href='https://automationteststore.com/index.php?rt=product/product&path=58_63&product_id=75']
     ${random_number_1}    Evaluate    random.randint(1, 10)
     Input Text    //*[@id="product_quantity"]    ${random_number_1}
     Click Element    //*[@id="product"]/fieldset/div[4]/ul/li/a
+    Up date 10 product
+    Check out
+    Close Browser
 
-TC Add all available fragrance sets to cart
+TC Buy and update 10 product all available fragrance sets to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=58_59&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[6]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[6]/div/ul[1]/li[2]/a
     FOR    ${product_url}    IN    @{ID_FRAGRANCE_SETS}
         Click Element    //a[@href='${base_url}${product_url}']
-        Check fragrance    ${product_url}
+        Check fragrance sets    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=58_59
     END
+    Up date 10 product
+    Check out
     Close Browser
 
-TC Add available shaving cream to cart
+TC Buy and update 10 product available shaving cream to cart
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[6]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[6]/div/ul[1]/li[3]/a
     Click Element    //a[@href='https://automationteststore.com/index.php?rt=product/product&path=58_61&product_id=98']
     ${random_number_1}    Evaluate    random.randint(1, 10)
     Input Text    //*[@id="product_quantity"]    ${random_number_1}
     Click Element    //*[@id="product"]/fieldset/div[4]/ul/li/a
-
-TC Add available men skin care to cart
+    Up date 10 product
+    Check out
+    Close Browser
+TC Buy and update 10 product available men skin care to cart
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[6]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[6]/div/ul[1]/li[4]/a
     Click Element    //a[@href='https://automationteststore.com/index.php?rt=product/product&path=58_60&product_id=96']
@@ -276,12 +278,14 @@ TC Add available men skin care to cart
     Go To    https://automationteststore.com/index.php?rt=product/category&path=58_60
     Click Element    //a[@href='https://automationteststore.com/index.php?rt=product/product&path=58_60&product_id=76']
     Click Element    //*[@id="product"]/fieldset/div[4]/ul/li/a
+    Up date 10 product
+    Check out
     Close Browser
 
-TC Add all available conditioner to cart
+TC Buy and update 10 product all available conditioner in cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=52_54&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[7]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[7]/div/ul[1]/li[1]/a
     FOR    ${product_url}    IN    @{ID_CONDITIONER}
@@ -289,12 +293,14 @@ TC Add all available conditioner to cart
         Check conditioner    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=52_54
     END
+    Up date 10 product
+    Check out
     Close Browser
 
-TC Add all available shampo to cart
+TC Buy and update 10 product all available shampo to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=52_53&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[7]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[7]/div/ul[1]/li[2]/a
     FOR    ${product_url}    IN    @{ID_SHAMPOO}
@@ -302,11 +308,13 @@ TC Add all available shampo to cart
         Check shampoo    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=52_53
     END
+    Up date 10 product
+    Check out
     Close Browser
-TC Add all available books to cart
+TC Buy and update 10 product all available books to cart
     ${base_url}     Set Variable     https://automationteststore.com/index.php?rt=product/product&path=65_67&product_id=
     Open Web
-#    Login
+    Login
     Mouse Over    //*[@id="categorymenu"]/nav/ul/li[8]/a
     Click Element    //*[@id="categorymenu"]/nav/ul/li[8]/div/ul[1]/li[2]/a
     FOR    ${product_url}    IN    @{ID_PAPERBACK}
@@ -314,19 +322,45 @@ TC Add all available books to cart
         Check books    ${product_url}
         Go To    https://automationteststore.com/index.php?rt=product/category&path=65_67
     END
+    Up date 10 product
+    Check out
     Close Browser
-
-# ========= top1111
-
+TC reset cart
+    Open Web
+    Login
+    Click Element    //*[@id="main_menu_top"]/li[3]/a
+    ${row_elements}=    Get WebElements    //*[@id="cart"]/div/div[1]/table/tbody/tr
+    ${row_count}=    Get Length    ${row_elements}
+    FOR    ${counter}    IN RANGE    1    ${row_count}
+        Click Element    //*[@id="cart"]/div/div[1]/table/tbody/tr[2]/td[7]/a
+        Sleep    2
+    END
+    Close Browser
 *** Keywords ***
 Open Web
     Open Browser    ${url}    ${browser}
     Maximize Browser Window
+Up date 10 product
+    Click Element    //*[@id="main_menu_top"]/li[3]/a
+    ${row_elements}=    Get WebElements    //*[@id="cart"]/div/div[1]/table/tbody/tr
+    ${row_count}=    Get Length    ${row_elements}
+    ${quantity_ids}=    Get WebElements    xpath=//td[@class='align_center']//input[contains(@name, 'quantity')]
+    FOR    ${element}    IN    @{quantity_ids}
+        Log    ${element}
+        Input Text    ${element}    10
+    END
+    Click Element    //*[@id="cart_update"]
 Login
     Click Element    //*[@id="customer_menu_top"]/li/a
     Input Text    //*[@id="loginFrm_loginname"]    truongthai
     Input Password    //*[@id="loginFrm_password"]    0364529228
     Click Button    //*[@id="loginFrm"]/fieldset/button
+Check out
+    Click Element    //*[@id="main_menu_top"]/li[4]/a
+    Click Element    //*[@id="checkout_btn"]
+    Wait Until Element Is Visible    //*[@id="maincontainer"]/div/div/div/div/section/p[5]
+    ${text}=    Get Text    //*[@id="maincontainer"]/div/div/div/div/section/p[5]
+    Should Be Equal As Strings    ${text}     Thank you for shopping with us!
 Check shoes
     [Arguments]     ${id}
     IF    ${id} == 116

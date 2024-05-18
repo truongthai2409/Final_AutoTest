@@ -416,22 +416,585 @@ The User Has Omitted The Information For The First Name Field
     Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
     Location Should Be    https://automationteststore.com/index.php?rt=account/login
     Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
-    Input Text    id=first_name    John
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nFirst Name must be between 1 and 32 characters!
+
+The User Has Omitted The Information For The Last Name Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nLast Name must be between 1 and 32 characters!
+
+The User Has Omitted The Information For The Email Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nEmail Address does not appear to be valid!
+
+The User Has Omitted The Information For The Telephone Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    Congratulations! Your new account has been successfully created!\nYou can now take advantage of member privileges to enhance your online shopping experience with us.\nIf you have ANY questions about the operation of this online shop, please email the store owner.\nA confirmation has been sent to the provided email address. If you have not received it within the hour, please contact us.\nContinue
+
+The User Has Omitted The Information For The Fax Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    Congratulations! Your new account has been successfully created!\nYou can now take advantage of member privileges to enhance your online shopping experience with us.\nIf you have ANY questions about the operation of this online shop, please email the store owner.\nA confirmation has been sent to the provided email address. If you have not received it within the hour, please contact us.\nContinue
+
+The User Has Omitted The Information For The Company Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    Congratulations! Your new account has been successfully created!\nYou can now take advantage of member privileges to enhance your online shopping experience with us.\nIf you have ANY questions about the operation of this online shop, please email the store owner.\nA confirmation has been sent to the provided email address. If you have not received it within the hour, please contact us.\nContinue
+
+The User Has Omitted The Information For The Address1 Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nAddress 1 must be between 3 and 128 characters!
+
+The User Has Omitted The Information For The Address2 Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    Congratulations! Your new account has been successfully created!\nYou can now take advantage of member privileges to enhance your online shopping experience with us.\nIf you have ANY questions about the operation of this online shop, please email the store owner.\nA confirmation has been sent to the provided email address. If you have not received it within the hour, please contact us.\nContinue
+
+The User Has Omitted The Information For The City Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nCity must be between 3 and 128 characters!
+
+The User Has Omitted The Information For The Region Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nPlease select a region / state!
+
+The User Has Omitted The Information For The Zipcode Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nZip/postal code must be between 3 and 10 characters!
+
+The User Has Omitted The Information For The Country Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nPlease select a country!
+
+The User Has Omitted The Information For The LoginName Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nLogin name must be alphanumeric only and between 5 and 64 characters!
+
+The User Has Omitted The Information For The Password Field
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nPassword must be between 4 and 20 characters!\nPassword confirmation does not match password!
+
+The User Has Omitted The Information For The Radio
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    Congratulations! Your new account has been successfully created!\nYou can now take advantage of member privileges to enhance your online shopping experience with us.\nIf you have ANY questions about the operation of this online shop, please email the store owner.\nA confirmation has been sent to the provided email address. If you have not received it within the hour, please contact us.\nContinue
+
+The User Has Omitted The Information For The Checkbox
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${btn_continue_register}
+    Element Should Be Visible    ${Error}
+    ${Error_text}    Get Text    ${Error}
+    Should Be Equal As Strings    ${Error_text}    ×\nError: You must agree to the Privacy Policy!
 
 User Should Be Able To Register With Valid Credentials Pass
     Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Click Button    xpath=/html/body/div/div[2]/div/div/div/div/div[1]/div/form/fieldset/button
+    ${random_username}    Generate Random String    8    [LOWER]
+    ${random_password}    Generate Random String    10    [UPPERCASE]
+    ${random_numbers}=    Generate Random String    10    1234567890
+    ${random_number_country}=    Evaluate    random.randint(1, 239)
+    ${random_number_region}=    Set Region Based On Country    ${random_number_country}
+    ${DOMAIN}    Set Variable    example.com
+    ${email}    Set Variable    ${random_username}@${DOMAIN}
+    Input Text    ${firstname_filed}    ${random_username}
+    Input Text    ${lastname_field}    ${random_username}
+    Input Text    ${email_field}    ${email}
+    Input Text    ${telephone_field}    ${random_numbers}
+    Input Text    ${fax_field}    ${random_numbers}
+    Input Text    ${Company_field}    ${random_username}
+    Input Text    ${Address1_field}    ${random_numbers}${random_username}
+    Input Text    ${Address2_field}    ${random_numbers}${random_username}
+    Input Text    ${city_field}    ${random_numbers}
+    Input Text    ${zipcode}    ${random_numbers}
+    Select From List By Value    ${select_country}    ${random_number_country}
+    Sleep    1s
+    Select From List By Value    ${select_region}    ${random_number_region}
+    Input Text    ${Login_name_filed}    ${random_username}
+    Input Text    ${Password_field}    ${random_password}
+    Input Text    ${Password_confirm_filed}    ${random_password}
+    Click Element    ${Radio1}
+    Click Element    ${Checkbox}
+    Click Element    ${btn_continue_register}
     Location Should Be    https://automationteststore.com/index.php?rt=account/success
-    ${Main_text}    Get Text    xpath=/html/body/div/div[2]/div/div[1]/div/h1/span[1]/text()
+    Wait Until Element Is Visible    xpath=//*[@id="maincontainer"]/div/div/div/h1/span[1]
+    ${Main_text}    Get Text    xpath=//*[@id="maincontainer"]/div/div/div/h1/span[1]
     ${p1}    Get Text    xpath=/html/body/div/div[2]/div/div[1]/div/div/section/p[2]
     ${p2}    Get Text    xpath=/html/body/div/div[2]/div/div[1]/div/div/section/p[3]
     ${p3}    Get Text    xpath=/html/body/div/div[2]/div/div[1]/div/div/section/p[4]
     ${p4}    Get Text    xpath=/html/body/div/div[2]/div/div[1]/div/div/section/p[5]
     ${a}    Get Text    xpath=/html/body/div/div[2]/div/div[1]/div/div/section/p[5]/a
-    Should Be Equal As Strings    ${Main_text}    Your Account Has Been Created!
+    Should Be Equal As Strings    ${Main_text}    YOUR ACCOUNT HAS BEEN CREATED!
     Should Be Equal As Strings    ${p1}    Congratulations! Your new account has been successfully created!
     Should Be Equal As Strings    ${p2}    You can now take advantage of member privileges to enhance your online shopping experience with us.
     Should Be Equal As Strings    ${p3}    If you have ANY questions about the operation of this online shop, please email the store owner.
-    Should Be Equal As Strings    ${p4}    A confirmation has been sent to the provided email address. If you have not received it within the hour, please
+    Should Be Equal As Strings    ${p4}    A confirmation has been sent to the provided email address. If you have not received it within the hour, please contact us.
     Should Be Equal As Strings    ${a}    contact us
     Element Should Be Visible    ${btn_continue_register_success}
 
@@ -928,29 +1491,29 @@ Set Region Based On Country
     ${random194}=    Set Variable    0
     ${random195}=    Evaluate    random.randint(2970, 3021)
     ${random196}=    Evaluate    random.randint(3022, 3030)
-    ${random197}=    Evaluate    random.randint(2647, 2648)
-    ${random198}=    Evaluate    random.randint(3034, 3059)
-    ${random199}=    Evaluate    random.randint(3060, 3069)
-    ${random200}=    Set Variable    0
-    ${random201}=    Evaluate    random.randint(3070, 3073)
-    ${random202}=    Evaluate    random.randint(3074, 3094)
-    ${random203}=    Evaluate    random.randint(3095, 3120)
-    ${random204}=    Evaluate    random.randint(3121, 3134)
-    ${random205}=    Evaluate    random.randint(3135, 3159)
-    ${random206}=    Evaluate    random.randint(3160, 3162)
-    ${random207}=    Evaluate    random.randint(3163, 3188)
-    ${random208}=    Evaluate    random.randint(3189, 3264)
-    ${random209}=    Evaluate    random.randint(3265, 3269)
-    ${random210}=    Evaluate    random.randint(3270, 3272)
-    ${random211}=    Evaluate    random.randint(3273, 3275)
-    ${random212}=    Evaluate    random.randint(3276, 3290)
-    ${random213}=    Evaluate    random.randint(3291, 3314)
+    ${random197}=    Evaluate    random.randint(3031, 3033)
+    ${random198}=    Evaluate    random.randint(2647, 2648)
+    ${random199}=    Evaluate    random.randint(3034, 3059)
+    ${random200}=    Evaluate    random.randint(3060, 3069)
+    ${random201}=    Set Variable    0
+    ${random202}=    Evaluate    random.randint(3070, 3073)
+    ${random203}=    Evaluate    random.randint(3074, 3094)
+    ${random204}=    Evaluate    random.randint(3095, 3120)
+    ${random205}=    Evaluate    random.randint(3121, 3134)
+    ${random206}=    Evaluate    random.randint(3135, 3159)
+    ${random207}=    Evaluate    random.randint(3160, 3162)
+    ${random208}=    Evaluate    random.randint(3163, 3188)
+    ${random209}=    Evaluate    random.randint(3189, 3264)
+    ${random210}=    Evaluate    random.randint(3265, 3269)
+    ${random211}=    Evaluate    random.randint(3270, 3272)
+    ${random212}=    Evaluate    random.randint(3273, 3275)
+    ${random213}=    Evaluate    random.randint(3276, 3290)
     ${random214}=    Evaluate    random.randint(3291, 3314)
     ${random215}=    Evaluate    random.randint(3315, 3395)
     ${random216}=    Evaluate    random.randint(3396, 3400)
     ${random217}=    Evaluate    random.randint(3401, 3414)
     ${random218}=    Evaluate    random.randint(3415, 3423)
-    ${random219}=    Evaluate    random.randint(3424, 3478)
+    ${random219}=    Evaluate    random.randint(3424, 3479)
     ${random220}=    Evaluate    random.randint(3480, 3505)
     ${random221}=    Evaluate    random.randint(3506, 3512)
     ${random222}=    Evaluate    random.randint(3513, 3612)

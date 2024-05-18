@@ -12,6 +12,16 @@ ${forgot_passowrd}    xpath=//*[@id="loginFrm"]/fieldset/a[1]
 ${forgot_login}    xpath=//*[@id="loginFrm"]/fieldset/a[2]
 ${btn_login}      xpath=//*[@id="loginFrm"]/fieldset/button
 ${Erorr}          xpath=//*[@id="maincontainer"]/div/div/div/div[1]
+${Forgot_password_link}    xpath=//*[@id="loginFrm"]/fieldset/a[1]
+${login_forgot_password_field}    xpath=//*[@id="forgottenFrm_loginname"]
+${email_field}    xpath=//*[@id="forgottenFrm_email"]
+${btn_forgot_password}    xpath=//*[@id="forgottenFrm"]/div[2]/div/button
+${forgot_password_message}    xpath=//*[@id="maincontainer"]/div/div/div/div[1]
+${Forgot_login_link}    xpath=//*[@id="loginFrm"]/fieldset/a[2]
+${lastname_field}    xpath=//*[@id="forgottenFrm_lastname"]
+${email_field1}    xpath=//*[@id="forgottenFrm_email"]
+${btn_forgot_login}    xpath=//*[@id="forgottenFrm"]/div[2]/div/button
+${forgot_login_message}    xpath=//*[@id="maincontainer"]/div/div/div/div[1]
 ${VALID_USERNAME}    ThanhDat07
 ${VALID_PASSWORD}    987654321
 ${INVALID_USERNAME}    ThanhDat
@@ -113,4 +123,104 @@ Missing password name
     Should Be Equal As Strings    ${Erorr_Message}    ×\nError: Incorrect login or password provided.
     Close Browser
 
-Forgot Login Name
+Forgot Password
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Click Element    ${Forgot_password_link}
+    Location Should Be    https://automationteststore.com/index.php?rt=account/forgotten/password
+    Close Browser
+
+Forgot Password Valid
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Click Element    ${Forgot_password_link}
+    Location Should Be    https://automationteststore.com/index.php?rt=account/forgotten/password
+    Element Should Be Visible    ${login_forgot_password_field}
+    Element Should Be Visible    ${email_field}
+    Input Text    ${login_forgot_password_field}    ${VALID_USERNAME}
+    Input Text    ${email_field}    luuthithi07@gmail.com
+    Click Element    ${btn_forgot_password}
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Element Should Be Visible    ${forgot_password_message}
+    ${text}    Get Text    ${forgot_password_message}
+    Should Be Equal As Strings    ${text}    ×\nSuccess: Password reset link has been sent to your e-mail address.
+    Close Browser
+
+Forgot Password Valid Not Login
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Click Element    ${Forgot_password_link}
+    Location Should Be    https://automationteststore.com/index.php?rt=account/forgotten/password
+    Element Should Be Visible    ${login_forgot_password_field}
+    Element Should Be Visible    ${email_field}
+    Input Text    ${email_field}    luuthithi07@gmail.com
+    Click Element    ${btn_forgot_login}
+    Element Should Be Visible    ${forgot_login_message}
+    ${text}    Get Text    ${forgot_login_message}
+    Should Be Equal As Strings    ${text}    ×\nError: The Login name was not provided or not found in our records, please try again!
+    Close Browser
+
+Forgot Password Valid Not Email
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Click Element    ${Forgot_password_link}
+    Location Should Be    https://automationteststore.com/index.php?rt=account/forgotten/password
+    Element Should Be Visible    ${login_forgot_password_field}
+    Element Should Be Visible    ${email_field}
+    Input Text    ${login_forgot_password_field}    ${VALID_USERNAME}
+    Click Element    ${btn_forgot_password}
+    Element Should Be Visible    ${forgot_password_message}
+    ${text}    Get Text    ${forgot_password_message}
+    Should Be Equal As Strings    ${text}    ×\nError: The Email address was not provided or not found in our records, please try again!
+    Close Browser
+
+Forgot Login
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Click Element    ${Forgot_login_link}
+    Location Should Be    https://automationteststore.com/index.php?rt=account/forgotten/loginname
+    Close Browser
+
+Forgot Login Valid
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Click Element    ${Forgot_login_link}
+    Location Should Be    https://automationteststore.com/index.php?rt=account/forgotten/loginname
+    Element Should Be Visible    ${lastname_field}
+    Element Should Be Visible    ${email_field1}
+    Input Text    ${lastname_field}    Phan Lê
+    Input Text    ${email_field1}    luuthithi07@gmail.com
+    Click Element    ${btn_forgot_login}
+    Location Should Be    https://automationteststore.com/index.php?rt=account/login
+    Element Should Be Visible    ${forgot_login_message}
+    ${text}    Get Text    ${forgot_login_message}
+    Should Be Equal As Strings    ${text}    ×\nSuccess: Your login name reminder has been sent to your e-mail address.
+    Close Browser
+
+Forgot Login Valid Not Login
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Click Element    ${Forgot_login_link}
+    Location Should Be    https://automationteststore.com/index.php?rt=account/forgotten/loginname
+    Element Should Be Visible    ${lastname_field}
+    Element Should Be Visible    ${email_field1}
+    Input Text    ${email_field1}    luuthithi07@gmail.com
+    Click Element    ${btn_forgot_login}
+    Element Should Be Visible    ${forgot_login_message}
+    ${text}    Get Text    ${forgot_login_message}
+    Should Be Equal As Strings    ${text}    ×\nError: The Last name was not provided or not found in our records, please try again!
+    Close Browser
+
+Forgot Login Valid Not Email
+    Open Browser    ${URL}    ${BROWSER}
+    Click Element    xpath=/html/body/div/header/div[1]/div/div[2]/div/div[2]/div/ul/li/a
+    Click Element    ${Forgot_login_link}
+    Location Should Be    https://automationteststore.com/index.php?rt=account/forgotten/loginname
+    Element Should Be Visible    ${lastname_field}
+    Element Should Be Visible    ${email_field1}
+    Input Text    ${lastname_field}    Phan Lê
+    Click Element    ${btn_forgot_login}
+    Element Should Be Visible    ${forgot_login_message}
+    ${text}    Get Text    ${forgot_login_message}
+    Should Be Equal As Strings    ${text}    ×\nError: The Email address was not provided or not found in our records, please try again!
+    Close Browser
